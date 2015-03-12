@@ -1119,7 +1119,11 @@ dll_crt0 (per_process *uptr)
    See winsup/testsuite/cygload for an example of how to use msys-2.0.dll
    from MSVC and non-Msys MinGW applications.  */
 extern "C" void
+#ifdef __MSYS__
 msys_dll_init ()
+#else
+cygwin_dll_init ()
+#endif
 {
 #ifndef __x86_64__
   static char **envp;

@@ -205,7 +205,11 @@ parse_options (const char *inbuf)
       if (export_settings)
 	{
 	  debug_printf ("%s", newbuf + 1);
+#ifdef __MSYS__
 	  setenv ("MSYS", newbuf + 1, 1);
+#else
+	  setenv ("CYGWIN", newbuf + 1, 1);
+#endif
 	}
       return;
     }
@@ -980,7 +984,7 @@ spenv::retrieve (bool no_envblock, const char *const env)
       if (env && !cygheap->user.issetuid ())
 	{
 	  debug_printf ("duping existing value for '%s'", name);
-	  /* Don't really care what it's set to if we're calling a msys program */
+	  /* Don't really care what it's set to if we're calling a cygwin program */
 	  return cstrdup1 (env);
 	}
 

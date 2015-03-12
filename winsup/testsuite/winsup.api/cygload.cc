@@ -7,17 +7,17 @@
    This software is a copyrighted work licensed under the terms of the
    Cygwin license.  Please consult the file "CYGWIN_LICENSE" for details.
   
-   Note that dynamically linking to msys-2.0.dll automatically places your code
+   Note that dynamically linking to cygwin1.dll automatically places your code
    under the GPL unless you purchase a Cygwin Contract with Red Hat, Inc.
    See http://www.redhat.com/software/cygwin/ for more information.
 
-   cygload demonstrates how to dynamically load msys-2.0.dll.  The default
+   cygload demonstrates how to dynamically load cygwin1.dll.  The default
    build uses MinGW to compile it; the Makefile also shows how to build
    it using the Microsoft compiler.
 
    By default, the program will silently test basic functionality:
      * Making space on the stack for cygtls
-     * Loading and initializing msys-2.0.dll
+     * Loading and initializing cygwin1.dll
      * Path translation
      * Error handling
      * Signal handling

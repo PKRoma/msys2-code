@@ -156,7 +156,7 @@ extern int cygserver_running;
 /******************** Initialization/Termination **********************/
 
 class per_process;
-/* msys .dll initialization */
+/* cygwin .dll initialization */
 void dll_crt0 (per_process *) __asm__ (_SYMSTR (dll_crt0__FP11per_process));
 extern "C" void __stdcall _dll_crt0 ();
 void dll_crt0_1 (void *);

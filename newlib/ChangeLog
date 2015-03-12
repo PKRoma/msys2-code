@@ -1,3 +1,21 @@
+2015-03-11  Sebastian Huber  <sebastian.huber@embedded-brains.de>
+
+	* libc/include/sys/_timespec.h: Import from FreeBSD.
+	* libc/include/sys/timespec.h: Likewise.
+	* libc/include/time.h: Include <sys/timespec.h>.
+	* libc/include/sys/types.h (timespec): Delete.
+	(itimerspec): Likewise.
+	* libc/include/machine/time.h: Include <sys/_timespec.h>.
+	* libc/include/sys/sched.h: Likewise.
+	* libc/include/sys/signal.h: Likewise.
+	* libc/include/sys/stat.h: Likewise.
+
+2015-03-11  Nick Clifton  <nickc@redhat.com>
+
+	* testsuite/newlib.stdio/swprintf.c (main): Change size of value
+	used to initialise 'val' variable so that it will compile on
+	targets with 32-bit doubles.
+
 2015-03-05  Craig Howland  <howland@LGSInnovations.com>
 
 	* libc/include/stdio.h (FILE): Protect typedef from redefinition.
@@ -1811,11 +1829,6 @@
 	* libc/include/sys/reent.h (_ATEXIT_INIT_PTR): Remove.
 	(_REENT_INIT_ATEXIT_PTR): Remove.
 	(_REENT_INIT_PTR): Reduce code size if _REENT_SMALL.
-
-2013-06-21  Will Newton  <will.newton@linaro.org>
-
-	* libc/machine/arm/strlen-armv7.S: Import latest strlen
-	code from Linaro cortex-strings.
 
 2013-06-21  Will Newton  <will.newton@linaro.org>
 

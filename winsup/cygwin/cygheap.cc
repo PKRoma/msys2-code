@@ -115,7 +115,7 @@ init_cygheap::close_ctty ()
   cygheap->ctty = NULL;
 }
 
-/* Use absolute path of msys-2.0.dll to derive the Win32 dir which
+/* Use absolute path of cygwin1.dll to derive the Win32 dir which
    is our installation_root.  Note that we can't handle Cygwin installation
    root dirs of more than 4K path length.  I assume that's ok...
 
@@ -181,9 +181,11 @@ init_cygheap::init_installation_root ()
 
   /* Strip off last path component ("\\cygwin1.dll") */
   PWCHAR w = wcsrchr (installation_root, L'\\');
+#ifdef __MSYS__
   /* Back two folders to get root as we have all stuff in usr subfolder */
   for (int i=1; i >=0; --i)
   {
+#endif
   if (w)
     {
       *w = L'\0';
@@ -192,7 +194,9 @@ init_cygheap::init_installation_root ()
   if (!w)
     api_fatal ("Can't initialize MSYS2 installation root dir.\n"
 	       "Invalid DLL path");
+#ifdef __MSYS__
   }
+#endif
 
   /* Copy result into installation_dir before stripping off "bin" dir and
      revert to Win32 path.  This path is added to the Windows environment
